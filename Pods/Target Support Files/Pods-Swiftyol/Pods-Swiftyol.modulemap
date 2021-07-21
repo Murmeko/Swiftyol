@@ -1,0 +1,6 @@
+framework module Pods_Swiftyol {
+  umbrella header "Pods-Swiftyol-umbrella.h"
+
+  export *
+  module * { export * }
+}
