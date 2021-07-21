@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct K {
+    static let productsTableViewCellIdentifier = "ReuseableProductsTableViewCell"
+    static let productsCollectionViewCellIdentifier = "ReuseableProductsCollectionViewCell"
+    static let pokemonCellNibName = "PokemonCollectionViewCell"
+    static let pokemonDetailsCellNibName = "PokemonDetailsTableViewCell"
+    static let allPokemonToPokemonDetailsSegue = "allPokemonToPokemonDetails"
+}
