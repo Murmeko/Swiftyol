@@ -15,16 +15,16 @@ enum NetworkManagerError: Error {
 struct NetworkManager {
     let fakeStoreAPIProvider = MoyaProvider<FakeStoreAPI>()
     
-    typealias ProductsDataCompletion = (ProductsModel?, NetworkManagerError?) -> ()
-    typealias ProductDetailsDataCompletion = (ProductsModel?, NetworkManagerError?) -> ()
+    typealias ProductListDataCompletion = ([ProductModel]?, NetworkManagerError?) -> ()
+    typealias ProductDetailsDataCompletion = (ProductModel?, NetworkManagerError?) -> ()
     
-    func fetchAllProducts(completion: @escaping ProductsDataCompletion) {
+    func fetchAllProducts(completion: @escaping ProductListDataCompletion) {
         fakeStoreAPIProvider.request(.getAllProducts) { result in
             switch result {
             case let .success(moyaResponse):
                 do {
                     let filteredResponse = try moyaResponse.filterSuccessfulStatusCodes()
-                    let allProductsData = try filteredResponse.map(ProductsModel.self)
+                    let allProductsData = try filteredResponse.map([ProductModel].self)
                     completion(allProductsData, nil)
                 }
                 catch let error {
@@ -37,7 +37,6 @@ struct NetworkManager {
                 completion(nil, .failedRequest)
                 return
             }
-            
         }
     }
 }

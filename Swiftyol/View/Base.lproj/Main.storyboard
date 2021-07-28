@@ -21,6 +21,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="GG7-tL-SGj"/>
+                    <connections>
+                        <outlet property="productsTableView" destination="yOo-az-2Mb" id="gJ5-fT-hz5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGl-fr-yoY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
