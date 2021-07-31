@@ -21,43 +21,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZG-lS-mg8">
-                                <rect key="frame" x="10" y="10" width="280" height="312"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="337.5"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHX-Kp-J2o">
-                                <rect key="frame" x="10" y="372" width="280" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHX-Kp-J2o">
+                                <rect key="frame" x="10" y="347.5" width="280" height="21.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="TZ1-dx-CNF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-uE-8RP">
-                                <rect key="frame" x="10" y="332" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-uE-8RP">
+                                <rect key="frame" x="10" y="374" width="280" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="13" id="1qT-Zl-5nn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gGl-uE-8RP" firstAttribute="top" secondItem="AZG-lS-mg8" secondAttribute="bottom" constant="10" id="3Yd-GO-WLo"/>
-                            <constraint firstItem="gGl-uE-8RP" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" constant="10" id="72S-YU-LEK"/>
-                            <constraint firstItem="AZG-lS-mg8" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" constant="10" id="AHJ-mK-4Hm"/>
-                            <constraint firstItem="AZG-lS-mg8" firstAttribute="top" secondItem="pGd-Hk-MDh" secondAttribute="top" constant="10" id="K62-Ko-SX9"/>
-                            <constraint firstAttribute="trailing" secondItem="gGl-uE-8RP" secondAttribute="trailing" constant="10" id="N2D-z9-P8f"/>
-                            <constraint firstItem="cHX-Kp-J2o" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" constant="10" id="OXd-sb-sdu"/>
-                            <constraint firstAttribute="trailing" secondItem="cHX-Kp-J2o" secondAttribute="trailing" constant="10" id="SnZ-Nf-6E0"/>
-                            <constraint firstAttribute="bottom" secondItem="cHX-Kp-J2o" secondAttribute="bottom" constant="10" id="TxQ-C5-fbc"/>
-                            <constraint firstItem="cHX-Kp-J2o" firstAttribute="top" secondItem="gGl-uE-8RP" secondAttribute="bottom" constant="10" id="Vph-R5-IUX"/>
-                            <constraint firstAttribute="trailing" secondItem="AZG-lS-mg8" secondAttribute="trailing" constant="10" id="fIM-t4-wyT"/>
+                            <constraint firstItem="AZG-lS-mg8" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" id="3tO-cV-7XG"/>
+                            <constraint firstItem="cHX-Kp-J2o" firstAttribute="top" secondItem="AZG-lS-mg8" secondAttribute="bottom" constant="10" id="7fE-Gh-d8r"/>
+                            <constraint firstAttribute="trailing" secondItem="AZG-lS-mg8" secondAttribute="trailing" id="8Kd-uW-gnu"/>
+                            <constraint firstItem="cHX-Kp-J2o" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" constant="10" id="FRG-Sy-XRB"/>
+                            <constraint firstAttribute="trailing" secondItem="gGl-uE-8RP" secondAttribute="trailing" constant="10" id="W6H-GU-syg"/>
+                            <constraint firstAttribute="trailing" secondItem="cHX-Kp-J2o" secondAttribute="trailing" constant="10" id="c52-ky-DS5"/>
+                            <constraint firstAttribute="bottom" secondItem="gGl-uE-8RP" secondAttribute="bottom" constant="10" id="mYf-YR-BEv"/>
+                            <constraint firstItem="AZG-lS-mg8" firstAttribute="top" secondItem="pGd-Hk-MDh" secondAttribute="top" id="pd7-WL-xXV"/>
+                            <constraint firstItem="gGl-uE-8RP" firstAttribute="top" secondItem="cHX-Kp-J2o" secondAttribute="bottom" constant="5" id="yNk-sW-AaM"/>
+                            <constraint firstItem="gGl-uE-8RP" firstAttribute="leading" secondItem="pGd-Hk-MDh" secondAttribute="leading" constant="10" id="yQk-76-Zuz"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="pGd-Hk-MDh" secondAttribute="bottom" id="WTF-XU-Q16"/>
-                <constraint firstAttribute="trailing" secondItem="pGd-Hk-MDh" secondAttribute="trailing" id="hEF-bK-2by"/>
-                <constraint firstItem="pGd-Hk-MDh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="s1m-d2-sda"/>
-                <constraint firstItem="pGd-Hk-MDh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tIO-lK-zqA"/>
+                <constraint firstAttribute="bottom" secondItem="pGd-Hk-MDh" secondAttribute="bottom" id="6Qv-sp-vfc"/>
+                <constraint firstAttribute="trailing" secondItem="pGd-Hk-MDh" secondAttribute="trailing" id="WpS-OY-cUF"/>
+                <constraint firstItem="pGd-Hk-MDh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aRs-ad-xmR"/>
+                <constraint firstItem="pGd-Hk-MDh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hvz-98-rhb"/>
             </constraints>
             <size key="customSize" width="300" height="400"/>
             <connections>

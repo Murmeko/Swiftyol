@@ -5,10 +5,16 @@
 //  Created by Yiğit Erdinç on 24.07.2021.
 //
 
-import Foundation
+import UIKit
 
 class ProductListViewModel {
     var productList: [ProductModel] = []
+    var electronicsProductList: [ProductModel] = []
+    var jeweleryProductList: [ProductModel] = []
+    var mensClothingProductList: [ProductModel] = []
+    var womensClothingProductList: [ProductModel] = []
+    var productImages: [UIImage] = []
+    var productImageURLs: [URL] = []
     var networkManager = NetworkManager()
     var reloadTableView: (()->())?
 }
@@ -18,6 +24,34 @@ extension ProductListViewModel {
         networkManager.fetchAllProducts { data, error in
             if let safeData = data {
                 self.productList = safeData
+                let disGroup = DispatchGroup()
+                for product in safeData {
+                    disGroup.enter()
+                    if product.category == "electronics" {
+                        self.electronicsProductList.append(product)
+                    } else if product.category == "jewelery" {
+                        self.jeweleryProductList.append(product)
+                    } else if product.category == "men's clothing" {
+                        self.mensClothingProductList.append(product)
+                    } else if product.category == "women's clothing" {
+                        self.womensClothingProductList.append(product)
+                    }
+                    self.productImageURLs.append(URL(string: product.image)!)
+                    disGroup.leave()
+                }
+                disGroup.notify(queue: .main) {
+                    self.getProductImages()
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func getProductImages() {
+        self.networkManager.fetchProductImages(urls: productImageURLs) { data, error in
+            if let safeData = data {
+                self.productImages = safeData
                 self.reloadTableView?()
             } else {
                 print(error!.localizedDescription)

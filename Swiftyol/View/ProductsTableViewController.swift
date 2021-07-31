@@ -10,10 +10,11 @@ import UIKit
 class ProductsTableViewController: UITableViewController {
     @IBOutlet var productsTableView: UITableView!
     
-    var productListViewModel = ProductListViewModel.init()
+    private var productListViewModel = ProductListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initViewModel()
         initTableView()
         // Uncomment the following line to preserve selection between presentations
@@ -23,7 +24,7 @@ class ProductsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func initViewModel(){
+    private func initViewModel(){
         productListViewModel.reloadTableView = {
             DispatchQueue.main.async { self.productsTableView.reloadData() }
         }
@@ -32,6 +33,7 @@ class ProductsTableViewController: UITableViewController {
     
     private func initTableView() {
         self.productsTableView.register(UINib(nibName: K.productsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: K.productsTableViewCellIdentifier)
+        self.productsTableView.register(UINib(nibName: K.productsHeaderImageCellNibName, bundle: nil), forCellReuseIdentifier: K.productsHeaderImageCellIdentifier)
         self.productsTableView.dataSource = self
         self.productsTableView.delegate = self
     }
@@ -42,16 +44,54 @@ class ProductsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 300
+        } else {
+            return 250
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return productListViewModel.numberOfProducts()
+        if productListViewModel.numberOfProducts() == 0 {
+            return 0
+        } else {
+            return 5
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsTableViewCellIdentifier, for: indexPath) as! ProductsTableViewCell
-        
-        return cell
+        if indexPath.row == 0 {
+            let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsHeaderImageCellIdentifier, for: indexPath) as! ProductsHeaderImageCell
+            cell.productsHeaderImageView.image = productListViewModel.productImages[0]
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsTableViewCellIdentifier, for: indexPath) as! ProductsTableViewCell
+            cell.productsCategoriesLabel.text = "Electronics"
+            cell.productsCollectionView.tag = indexPath.row
+            cell.productsCollectionView.reloadData()
+            return cell
+        } else if indexPath.row == 2 {
+            let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsTableViewCellIdentifier, for: indexPath) as! ProductsTableViewCell
+            cell.productsCategoriesLabel.text = "Jewelery"
+            cell.productsCollectionView.tag = indexPath.row
+            cell.productsCollectionView.reloadData()
+            return cell
+        } else if indexPath.row == 3 {
+            let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsTableViewCellIdentifier, for: indexPath) as! ProductsTableViewCell
+            cell.productsCategoriesLabel.text = "Men Clothing"
+            cell.productsCollectionView.tag = indexPath.row
+            cell.productsCollectionView.reloadData()
+            return cell
+        } else {
+            let cell = self.productsTableView.dequeueReusableCell(withIdentifier: K.productsTableViewCellIdentifier, for: indexPath) as! ProductsTableViewCell
+            cell.productsCategoriesLabel.text = "Women Clothing"
+            cell.productsCollectionView.tag = indexPath.row
+            cell.productsCollectionView.reloadData()
+            return cell
+        }
     }
 
     /*

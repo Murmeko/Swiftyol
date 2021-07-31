@@ -6,6 +6,7 @@
 //
 
 import Moya
+import Kingfisher
 
 enum NetworkManagerError: Error {
     case failedRequest
@@ -17,6 +18,7 @@ struct NetworkManager {
     
     typealias ProductListDataCompletion = ([ProductModel]?, NetworkManagerError?) -> ()
     typealias ProductDetailsDataCompletion = (ProductModel?, NetworkManagerError?) -> ()
+    typealias ProductImagesDataCompletion = ([UIImage]?, NetworkManagerError?) -> ()
     
     func fetchAllProducts(completion: @escaping ProductListDataCompletion) {
         fakeStoreAPIProvider.request(.getAllProducts) { result in
@@ -37,6 +39,28 @@ struct NetworkManager {
                 completion(nil, .failedRequest)
                 return
             }
+        }
+    }
+    
+    func fetchProductImages(urls: [URL], completion: @escaping ProductImagesDataCompletion) {
+        var temp: [UIImage] = []
+        let group = DispatchGroup()
+        for url in urls {
+            group.enter()
+            let resource = ImageResource(downloadURL: url)
+            KingfisherManager.shared.retrieveImage(with: resource) { result in
+                switch result {
+                case .success(let data):
+                    temp.append(data.image)
+                    group.leave()
+                case .failure(let error):
+                    print("Failed request from FakeStoreAPI: \(error.localizedDescription)")
+                    completion(nil, .failedRequest)
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            completion(temp, nil)
         }
     }
 }
