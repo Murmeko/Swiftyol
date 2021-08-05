@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
-  - Kingfisher (6.3.0)
+  - Kingfisher (6.3.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -27,12 +27,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftyolLibrary:
-    :commit: 66398fde886fe79c476970f58aa6bc4700724b8c
+    :commit: b7f6354581e91fc850690c5fe280d9cdce26cd01
     :git: https://github.com/Murmeko/SwiftyolLibrary.git
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
-  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
   SwiftyolLibrary: ac969551bc5b7888a820ce4ae8495d8fbed99198
