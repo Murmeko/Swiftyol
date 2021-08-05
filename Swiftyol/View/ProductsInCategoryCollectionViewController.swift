@@ -10,15 +10,30 @@ import UIKit
 class ProductsInCategoryCollectionViewController: UICollectionViewController {
     @IBOutlet var productsInCategoryCollectionView: UICollectionView!
     
-    var productsInCategoryViewModel = ProductListViewModel.init()
+    private var productsInCategoryViewModel = ProductListViewModel.init()
+    
+    private var selectedProductModel: ProductViewModel?
     var productsCategory: productCategory?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureNavigationBar()
         configureViewModel()
         configureTableView()
-        productsInCategoryCollectionView.reloadData()
+    }
+    
+    private func configureNavigationBar() {
+        if productsCategory == .electronics {
+            self.title = "🖥️ Electronics"
+        } else if productsCategory == .jewelery {
+            self.title = "💎 Jewelery"
+        } else if productsCategory == .mensClothing {
+            self.title = "👔 Men's Clothing"
+        } else if productsCategory == .womensClothing {
+            self.title = "👚 Women's Clothing"
+        }
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func configureViewModel(){
@@ -44,8 +59,8 @@ class ProductsInCategoryCollectionViewController: UICollectionViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        let productDetailsViewController = segue.destination as! ProductDetailsTableViewController
+        productDetailsViewController.productDetailsModel = self.selectedProductModel
     }
 
     // MARK: UICollectionViewDataSource
@@ -62,5 +77,10 @@ class ProductsInCategoryCollectionViewController: UICollectionViewController {
         cell.productsPriceLabel.text = "$\(productInCategoryViewModel.price)"
         cell.productsImageView.image = productInCategoryViewModel.productImage
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedProductModel = self.productsInCategoryViewModel.getProductViewModel(productsCategory!, indexPath)
+        performSegue(withIdentifier: K.productsInCategoryToProductDetailsSegue, sender: collectionView)
     }
 }

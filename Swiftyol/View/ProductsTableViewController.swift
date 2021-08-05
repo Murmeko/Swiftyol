@@ -14,15 +14,21 @@ class ProductsTableViewController: UITableViewController {
     @IBOutlet var productsTableView: UITableView!
     
     private var productListViewModel = ProductListViewModel.init()
-    private var selectedProductModel: ProductViewModel?
     
+    private var selectedProductModel: ProductViewModel?
     private var selectedCategory: productCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavigationBar()
         configureViewModel()
         configureTableView()
+    }
+    
+    private func configureNavigationBar() {
+        self.title = "🐦 Swiftyol"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func configureViewModel(){
@@ -74,7 +80,7 @@ class ProductsTableViewController: UITableViewController {
             cell.productCellDelegate = self
             cell.productShowAllButton.tag = indexPath.row
             cell.productsCollectionView.tag = indexPath.row
-            cell.productsCategoriesLabel.text = "Electronics"
+            cell.productsCategoriesLabel.text = "🖥️ Electronics"
             cell.productsCollectionView.reloadData()
             return cell
         } else if indexPath.row == 2 {
@@ -83,7 +89,7 @@ class ProductsTableViewController: UITableViewController {
             cell.productCellDelegate = self
             cell.productShowAllButton.tag = indexPath.row
             cell.productsCollectionView.tag = indexPath.row
-            cell.productsCategoriesLabel.text = "Jewelery"
+            cell.productsCategoriesLabel.text = "💎 Jewelery"
             cell.productsCollectionView.reloadData()
             return cell
         } else if indexPath.row == 3 {
@@ -92,7 +98,7 @@ class ProductsTableViewController: UITableViewController {
             cell.productCellDelegate = self
             cell.productShowAllButton.tag = indexPath.row
             cell.productsCollectionView.tag = indexPath.row
-            cell.productsCategoriesLabel.text = "Men Clothing"
+            cell.productsCategoriesLabel.text = "👔 Men's Clothing"
             cell.productsCollectionView.reloadData()
             return cell
         } else {
@@ -101,7 +107,7 @@ class ProductsTableViewController: UITableViewController {
             cell.productCellDelegate = self
             cell.productShowAllButton.tag = indexPath.row
             cell.productsCollectionView.tag = indexPath.row
-            cell.productsCategoriesLabel.text = "Women Clothing"
+            cell.productsCategoriesLabel.text = "👚 Women's Clothing"
             cell.productsCollectionView.reloadData()
             return cell
         }
