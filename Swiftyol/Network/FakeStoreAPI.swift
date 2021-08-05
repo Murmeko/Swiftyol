@@ -8,8 +8,8 @@
 import Moya
 
 public enum FakeStoreAPI {
-    case getAllProducts
-    case getProductDetails(_id: Int)
+    case getProducts(_ productCategory: String)
+    case getProductDetails(_ id: Int)
 }
 
 extension FakeStoreAPI: TargetType {
@@ -19,8 +19,8 @@ extension FakeStoreAPI: TargetType {
     
     public var path: String {
         switch self {
-        case .getAllProducts:
-            return "/products"
+        case .getProducts(let productCategory):
+            return "/products\(productCategory)"
         case .getProductDetails(let productId):
             return "/products/\(productId)"
         }
@@ -36,7 +36,7 @@ extension FakeStoreAPI: TargetType {
     
     public var task: Task {
         switch self {
-        case .getAllProducts:
+        case .getProducts(_):
             return .requestPlain
         case .getProductDetails(_):
             return .requestPlain

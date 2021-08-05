@@ -8,9 +8,12 @@
 import UIKit
 
 class ProductsCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var productsPriceLabel: UILabel!
     @IBOutlet weak var productsTitleLabel: UILabel!
+    
+    var productViewModel: ProductViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
