@@ -1,0 +1,6 @@
+framework module SwiftyolLibrary {
+  umbrella header "SwiftyolLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}

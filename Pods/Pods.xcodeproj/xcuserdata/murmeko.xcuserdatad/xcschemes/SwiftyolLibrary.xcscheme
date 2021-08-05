@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1AABD0DDB9F61EB1237FE9CAE49C804"
-               BuildableName = "Pods_Swiftyol.framework"
-               BlueprintName = "Pods-Swiftyol"
+               BlueprintIdentifier = "735C0DE982C373E56DD1AA83BDC1D9E6"
+               BuildableName = "SwiftyolLibrary.framework"
+               BlueprintName = "SwiftyolLibrary"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
